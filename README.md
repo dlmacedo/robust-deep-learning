@@ -6,7 +6,7 @@ Train your model from scratch or fine-tune a pretrained model to produce deep ne
 
 >> **CALIBRATE**
 
-Calibrate your model to produce enhanced perfoamce estimations.
+Calibrate your model to produce enhanced uncertainy estimations.
 
 >> **DETECT**
 
