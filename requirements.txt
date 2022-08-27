@@ -1,0 +1,10 @@
+torchmetrics
+torchnet
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+tqdm
+timm
