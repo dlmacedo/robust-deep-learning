@@ -10,7 +10,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='robust_deep_learning',  
-    version="0.1.0",
+    version="0.1.1",
     author="David Macêdo",
     author_email="dlm@cin.ufpe.br",
     description="The Robust Deep Learning Library",

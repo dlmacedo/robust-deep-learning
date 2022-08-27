@@ -2,7 +2,6 @@ from .softmax import *
 from .isomax import *
 from .isomaxplus import *
 from .dismax import *
-from .dismax2 import *
 from .scores import *
 from .thresholds import *
 from .calibration import *
