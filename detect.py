@@ -33,10 +33,6 @@ file_path = os.path.join(dir_path, "results_ood.csv")
 with open(file_path, "w") as results_file:
     results_file.write("EXECUTION,MODEL,IN-DATA,OUT-DATA,LOSS,SCORE,TPR,AUROC,AUPRIN,AUPROUT\n")
 
-args_outf = os.path.join("temp", "ood", args.loss, args.model + '+' + args.dataset)
-if os.path.isdir(args_outf) == False:
-    os.makedirs(args_outf)
-
 if args.dataset == 'cifar10':
     args.num_classes = 10
     out_dist_list = ['cifar100', 'imagenet_resize', 'lsun_resize', 'svhn']

@@ -1,10 +1,10 @@
-<img align="center" src="assets/pme.PNG" width="750">
+<img align="center" src="assets/pme.png" width="750">
 
 # The Robust Deep Learning Library
 
 >> **TRAIN OR FINE-TUNE**
 
-Train your model from scratch or fine-tune a pretrained model to produce deep neural networks with improved out-of-distribution detection and uncertainty performance. In other words, rather than training or fine-tuning the usual Cross Entropy Loss, train or fine-tune using the loss provided in this library to obtain improved robustness.
+Train your model from scratch or fine-tune a pretrained model using the losses provided in this library to improve out-of-distribution detection and uncertainty estimation performances.
 
 >> **CALIBRATE**
 
@@ -70,10 +70,6 @@ SOTA results for out-of-distribution detection and uncertainty estimation.
 
 ## Results
 
-For results regarding CIFAR10 and CIFAR100, please see the DisMax paper:
-
-https://arxiv.org/abs/2205.05874
-
 ### Model=ResNet18, Dataset=ImageNet, Near OOD=ImageNet-O 
 
 | Loss [Score] | Class (ACC) | Near OOD (AUROC) |
@@ -82,6 +78,10 @@ https://arxiv.org/abs/2205.05874
 | DisMax [MMLES] | 69.6 | 75.8 |
 
 More ImageNet results comming soon...
+
+For results regarding CIFAR10 and CIFAR100, please see the DisMax paper:
+
+https://arxiv.org/abs/2205.05874
 
 ## Installation
 
