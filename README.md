@@ -1,4 +1,4 @@
-<img align="center" src="assets/pme.png" width="750">
+<img align="center" src="assets/rdl.png" width="750">
 
 # The Robust Deep Learning Library
 
@@ -8,7 +8,7 @@ Train your model from scratch or fine-tune a pretrained model using the losses p
 
 >> **CALIBRATE**
 
-Calibrate your model to produce enhanced uncertainy estimations.
+Calibrate your model to produce enhanced uncertainty estimations.
 
 >> **DETECT**
 
@@ -70,18 +70,16 @@ SOTA results for out-of-distribution detection and uncertainty estimation.
 
 ## Results
 
-### Model=ResNet18, Dataset=ImageNet, Near OOD=ImageNet-O 
+### Dataset=ImageNet, Model=ResNet18, Near OOD=ImageNet-O
 
 | Loss [Score] | Class (ACC) | Near OOD (AUROC) |
 |:---|:---:|:---:|
 | Cross-Entropy [MPS] | 69.9 | 52.4 |
 | DisMax [MMLES] | 69.6 | 75.8 |
 
-More ImageNet results comming soon...
+### Dataset=CIFAR
 
-For results regarding CIFAR10 and CIFAR100, please see the DisMax paper:
-
-https://arxiv.org/abs/2205.05874
+<img align="center" src="assets/table.png" width="750">
 
 ## Installation
 
@@ -202,7 +200,7 @@ results = rdl.get_outputs_labels_and_metrics(model, in_data_val_loader, gpu=None
 # Verifiy the probabilities, ECE, and NLL are improved regarding the now calibrated model.
 probabilities = torch.nn.Softmax(dim=1)(results["outputs"])
 print(probabilities)
-print(results["acc"], results["ece"],= results["nll"])
+print(results["acc"], results["ece"], results["nll"])
 
 ####################################################################################################
 ####################################################################################################
@@ -263,7 +261,13 @@ The following scores are implemented:
 - Minimum Distance Score [arXiv](https://arxiv.org/abs/2105.14399)
 - Maximum Mean Logit Entropy Score [arXiv](https://arxiv.org/abs/2205.05874)
 
-## Reproducibility
+## Experiments
+
+Install the requirements to reproduce the experiments of this library:
+
+```bash
+pip install -r requirements.txt
+```
 
 Please, move to the `data` directory and run all the prepare data bash scripts:
 
@@ -273,6 +277,8 @@ Please, move to the `data` directory and run all the prepare data bash scripts:
 # Download and prepare out-of-distrbution data for ImageNet.
 ./prepare-imagenet.sh
 ```
+
+Run the experiments:
 
 ```bash
 ./run_cifar100_densenetbc100.sh*
@@ -284,13 +290,13 @@ Please, move to the `data` directory and run all the prepare data bash scripts:
 ./run_imagenet1k_resnet18.sh*
 ```
 
+Analize the results:
+
 ```bash
 ./analize.sh
 ```
 
-## Citing
-
-### BibTeX
+## Citation
 
 Please, cite our papers if you use our losses in your work:
 
@@ -302,7 +308,8 @@ Please, cite our papers if you use our losses in your work:
   title={Entropic Out-of-Distribution Detection}, 
   year={2021},
   pages={1-8},
-  doi={10.1109/IJCNN52387.2021.9533899}}
+  doi={10.1109/IJCNN52387.2021.9533899}
+}
 ```
 
 ```bibtex
@@ -316,7 +323,8 @@ Please, cite our papers if you use our losses in your work:
   volume={33},
   number={6},
   pages={2350-2364},
-  doi={10.1109/TNNLS.2021.3112897}}
+  doi={10.1109/TNNLS.2021.3112897}
+}
 ```
 
 ```bibtex
