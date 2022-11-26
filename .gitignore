@@ -1,6 +1,7 @@
 __pycache__
 build/
 dist/
+experiments/
 *.egg-info/
 data/*/
 results_raw.csv

@@ -6,6 +6,7 @@ import os
 import robust_deep_learning as rdl
 import loaders
 import torch
+import timm
 
 
 parser = argparse.ArgumentParser(description='calibrator')
@@ -54,6 +55,27 @@ for args.execution in range(1, args.executions + 1):
     elif args.loss.split("_")[0] == "dismax":
         args.loss_first_part = rdl.DisMaxLossFirstPart
 
+
+
+
+    #if args.model == 'resnet34':
+    #    model = models.ResNet34(num_c=args.num_classes)
+    #    model.classifier = args.loss_first_part(model.classifier.in_features, model.classifier.out_features)
+    #elif args.model == 'densenetbc100':
+    #    model = models.DenseNet3(100, int(args.num_classes))
+    #    model.classifier = args.loss_first_part(model.classifier.in_features, model.classifier.out_features)
+    #elif args.model == "wideresnet2810":
+    #    model = models.Wide_ResNet(depth=28, widen_factor=10, num_classes=args.num_classes)
+    #    model.classifier = args.loss_first_part(model.classifier.in_features, model.classifier.out_features)
+    #elif args.model == "resnet18":
+    #    model = timm.create_model('resnet18', pretrained=False)
+    #    num_in_features = model.get_classifier().in_features
+    #    model.fc = args.loss_first_part(num_in_features, args.num_classes)
+
+
+
+
+
     # load networks
     if args.model == 'resnet34':
         model = models.ResNet34(num_c=args.num_classes)
@@ -67,6 +89,13 @@ for args.execution in range(1, args.executions + 1):
         model = models.Wide_ResNet(depth=28, widen_factor=10, num_classes=args.num_classes)
         model.linear = args.loss_first_part(model.classifier.in_features, model.classifier.out_features)
         model_last_layer = model.linear
+    ######################################################################
+    elif args.model == "resnet18":
+        model = timm.create_model('resnet18', pretrained=False)
+        #num_in_features = model.get_classifier().in_features
+        model.fc = args.loss_first_part(model.get_classifier().in_features, model.get_classifier().out_features)
+        model_last_layer = model.fc
+    ######################################################################
     if args.gpu is not None:
         model.load_state_dict(torch.load(pre_trained_net, map_location="cuda:" + str(args.gpu)))
     else:

@@ -86,8 +86,9 @@ for args.execution in range(1, args.executions + 1):
         model.classifier = args.loss_first_part(model.classifier.in_features, model.classifier.out_features)
     elif args.model == "resnet18":
         model = timm.create_model('resnet18', pretrained=False)
-        num_in_features = model.get_classifier().in_features
-        model.fc = args.loss_first_part(num_in_features, args.num_classes)
+        #num_in_features = model.get_classifier().in_features
+        #model.fc = args.loss_first_part(num_in_features, args.num_classes)
+        model.fc = args.loss_first_part(model.get_classifier().in_features, args.num_classes)
 
     if args.gpu is not None:
         model.load_state_dict(torch.load(pre_trained_net, map_location="cuda:" + str(args.gpu)))
